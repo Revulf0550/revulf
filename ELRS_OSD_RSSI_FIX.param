@@ -1,0 +1,30 @@
+# ============================================================
+# CORRECTED PARAMETERS FOR: Cube Orange + ELRS + Walksnail
+# System: ArduPilot Copter
+# Problem: OSD not showing real RSSI / LQ values + latency
+# ============================================================
+#
+# ONLY THESE PARAMETERS NEED TO BE CHANGED.
+# Load this file in Mission Planner -> Config -> Full Parameter List -> Load from file
+# Then click "Write Params" and reboot the autopilot.
+#
+
+# --- FIX 1: RSSI SOURCE (CRITICAL) ---
+# Was: RSSI_TYPE=2 (RC Channel) -- WRONG for ELRS
+# ELRS sends RSSI/LQ via CRSF telemetry, not via RC channel
+RSSI_TYPE,3
+# Was: RSSI_CHANNEL=15 -- WRONG for ELRS
+# Must be 0 when using RSSI_TYPE=3 (ReceiverProtocol)
+RSSI_CHANNEL,0
+
+# --- PARAMETERS THAT ARE ALREADY CORRECT (DO NOT CHANGE) ---
+# SERIAL4_PROTOCOL=23  (CRSF/RCIN) -- CORRECT
+# SERIAL4_BAUD=115     -- CORRECT (420K baud is set via RC_OPTIONS bit 13)
+# RC_OPTIONS=8708      -- CORRECT (bits 2+9+13: failsafe ignore + ELRS suppress + 420K baud)
+# RC_PROTOCOLS=512     -- CORRECT (CRSF)
+# OSD_TYPE=5           -- CORRECT (MSP DisplayPort for Walksnail)
+# SERIAL2_PROTOCOL=42  -- CORRECT (MSP DisplayPort)
+# SERIAL2_BAUD=115     -- CORRECT (115200 for Walksnail)
+# OSD1_RSSI_EN=1       -- CORRECT (RSSI element enabled on OSD)
+# OSD1_LINK_Q_EN=1     -- CORRECT (LQ element enabled on OSD)
+# RC_SPEED=490         -- CORRECT (ESC output frequency, NOT related to ELRS)
