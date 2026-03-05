@@ -1,0 +1,38 @@
+# ============================================================
+# ИСПРАВЛЕНИЕ RSSI / LQ НА OSD
+# Система: Cube Orange + ELRS + Walksnail Avatar V2 Dual Kit
+# Прошивка: ArduPilot Copter
+# ============================================================
+#
+# Загрузите этот файл в Mission Planner:
+#   Config -> Full Parameter List -> Load from file
+#   Нажмите "Write Params" и перезагрузите автопилот.
+#
+# ВНИМАНИЕ: Этот файл содержит ТОЛЬКО параметры, которые нужно изменить.
+# Все остальные параметры остаются без изменений.
+# ============================================================
+
+# --- ИСПРАВЛЕНИЕ 1: ИСТОЧНИК RSSI (КРИТИЧНО) ---
+# Было: RSSI_TYPE=2 (RC Channel) — НЕПРАВИЛЬНО для ELRS
+# ELRS передает RSSI/LQ через CRSF телеметрию, а не через RC канал
+RSSI_TYPE,3
+
+# --- ИСПРАВЛЕНИЕ 2: КАНАЛ RSSI (КРИТИЧНО) ---
+# Было: RSSI_CHANNEL=15 — НЕПРАВИЛЬНО для ELRS
+# Должно быть 0 при использовании RSSI_TYPE=3 (ReceiverProtocol)
+RSSI_CHANNEL,0
+
+# ============================================================
+# ПАРАМЕТРЫ, КОТОРЫЕ УЖЕ ПРАВИЛЬНО НАСТРОЕНЫ (НЕ МЕНЯТЬ)
+# ============================================================
+# SERIAL4_PROTOCOL=23  — CRSF/RCIN для ELRS
+# SERIAL4_BAUD=115     — 420K baud включен через RC_OPTIONS бит 13
+# RC_OPTIONS=8708      — биты 2+9+13: failsafe + ELRS suppress + 420K baud
+# RC_PROTOCOLS=512     — CRSF
+# OSD_TYPE=5           — MSP DisplayPort для Walksnail
+# SERIAL2_PROTOCOL=42  — MSP DisplayPort
+# SERIAL2_BAUD=115     — 115200 для Walksnail
+# OSD1_RSSI_EN=1       — RSSI на OSD включён
+# OSD1_LINK_Q_EN=1     — LQ на OSD включён
+# RC_SPEED=490         — частота PWM на ESC (не связано с ELRS)
+# TELEM_DELAY=0        — телеметрия без задержки
