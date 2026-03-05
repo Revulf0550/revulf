@@ -1,0 +1,31 @@
+# ============================================================================
+#  ArduPilot parameters for real RSSI & LQ on OSD
+#  Hardware: Cube Orange + ExpressLRS + Walksnail
+#  Based on: GR_ERLS_v28c.param
+# ============================================================================
+
+# --- ELRS receiver on SERIAL4 (CRSF protocol) ---
+SERIAL4_PROTOCOL,23
+SERIAL4_BAUD,420
+
+# --- RSSI from CRSF Link Statistics (not from RC channel) ---
+RSSI_TYPE,3
+RSSI_CHANNEL,0
+
+# --- RC options: bit8 (256) CRSF passthru + bit9 (512) suppress ELRS rate msgs ---
+RC_OPTIONS,768
+RC_SPEED,0
+
+# --- Scheduler: 800 Hz is safe for Cube Orange ---
+SCHED_LOOP_RATE,800
+
+# --- Walksnail OSD via MSP DisplayPort on SERIAL2 (verify your wiring) ---
+OSD_TYPE,5
+SERIAL2_PROTOCOL,42
+SERIAL2_BAUD,115
+
+# --- Enable RSSI and LQ elements on OSD Screen 1 ---
+# Format: screen-encoded position value; set to 1 to enable at default position
+# Adjust positions in Mission Planner OSD tab after loading
+OSD1_RSSI_EN,1
+OSD1_LQ_EN,1
