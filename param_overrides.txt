@@ -1,0 +1,9 @@
+# Параметры для изменения в Mission Planner
+# Config → Full Parameter List → ввести значения ниже
+# После изменений: Write Params → перезагрузка автопилота
+
+SERIAL4_BAUD,420
+RSSI_TYPE,3
+RSSI_CHANNEL,0
+RC_SPEED,0
+SCHED_LOOP_RATE,800
