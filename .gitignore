@@ -1,0 +1,42 @@
+# Секреты — НИКОГДА не коммитим
+*.key
+*.pem
+.env
+.env.local
+*_private*
+wireguard/
+
+# Полётные логи (могут быть гигабайтные)
+*.tlog
+*.BIN
+flight-logs/
+
+# Python venvs в подпроектах tools/ и companion/
+**/.venv/
+**/__pycache__/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.pytest_cache/
+**/uv.lock
+
+# STM32CubeIDE / PlatformIO
+**/.metadata/
+**/.settings/
+**/Debug/
+**/Release/
+**/build/
+**/.pio/
+
+# Arduino IDE
+**/build-*/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
